@@ -30,11 +30,12 @@ function App() {
               <div className="todo">
                 <div className="left">  
                   <input onChange={(e)=>{
-                    console.log(e.target.value)
+                    console.log(e.target.checked)
                     setTodos(todos.filter(obj2=>{
                       if (obj2.id == value.id) {
-                        obj2.status = e.target.value
+                        obj2.status = e.target.checked
                       }
+                      return obj2
                     }))
                   }} 
                   value={value.status} type="checkbox" name="" id="" />
@@ -48,8 +49,16 @@ function App() {
             )
           }
         )
+       }
+       {
+        todos.map((obj)=>{
+          if(obj.status){
+            return(
+              <h1>{obj.text}</h1>
+            )
+          } 
 
-         
+        })
        }
       </div>
     </div>
